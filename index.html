@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Embark on a sacred journey through the Himalayas, witnessing the divine meditation of Mahadev and the emergence of cosmic light in this immersive scroll sequence.">
+    <title>SHIVORAH | Divine Within</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    
+    <!-- Material Symbols Outlined -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    
+    <!-- Google Fonts for Jewelry Website -->
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;600&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+    
+    <!-- Google Fonts for Scroll Animation -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;800&family=Outfit:wght@200;400;600&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for Scroll Animation Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Scroll Animation Styles -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Tailwind Config for Colors & Typography -->
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-high": "#2a2a2a",
+                        "surface-container-low": "#1c1b1b",
+                        "on-tertiary-fixed-variant": "#474746",
+                        "secondary-fixed": "#ffdcc3",
+                        "surface-variant": "#353534",
+                        "inverse-primary": "#735c00",
+                        "surface-dim": "#131313",
+                        "on-error-container": "#ffdad6",
+                        "primary": "#f2ca50",
+                        "error": "#ffb4ab",
+                        "tertiary-fixed-dim": "#c8c6c5",
+                        "background": "#0a0a0a",
+                        "on-secondary-fixed-variant": "#6e3900",
+                        "on-primary-fixed-variant": "#574500",
+                        "on-tertiary-fixed": "#1c1b1b",
+                        "on-surface": "#f5f5f5",
+                        "on-secondary": "#4d2600",
+                        "primary-fixed": "#ffe088",
+                        "on-primary-container": "#554300",
+                        "secondary": "#ffb77d",
+                        "secondary-container": "#fd8b00",
+                        "tertiary-fixed": "#e5e2e1",
+                        "on-primary": "#3c2f00",
+                        "inverse-surface": "#e5e2e1",
+                        "tertiary-container": "#b4b2b2",
+                        "surface-container": "#201f1f",
+                        "on-background": "#e5e2e1",
+                        "surface": "#0a0a0a",
+                        "surface-tint": "#e9c349",
+                        "on-secondary-container": "#603100",
+                        "secondary-fixed-dim": "#ffb77d",
+                        "tertiary": "#d0cdcd",
+                        "primary-container": "#d4af37",
+                        "surface-container-highest": "#353534",
+                        "on-error": "#690005",
+                        "on-tertiary-container": "#454544",
+                        "on-secondary-fixed": "#2f1500",
+                        "primary-fixed-dim": "#e9c349",
+                        "on-primary-fixed": "#241a00",
+                        "surface-bright": "#3a3939",
+                        "error-container": "#93000a",
+                        "outline-variant": "#4d4635",
+                        "surface-container-lowest": "#050505",
+                        "on-surface-variant": "#d0c5af",
+                        "inverse-on-surface": "#313030",
+                        "on-tertiary": "#313030",
+                        "outline": "#99907c"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "unit": "8px",
+                        "margin-mobile": "24px",
+                        "gutter": "32px",
+                        "container-max": "1280px",
+                        "section-gap": "160px",
+                        "margin-desktop": "64px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Hanken Grotesk"],
+                        "body-md": ["Hanken Grotesk"],
+                        "headline-md": ["Playfair Display"],
+                        "headline-xl": ["Playfair Display"],
+                        "headline-lg": ["Playfair Display"],
+                        "label-caps": ["Hanken Grotesk"],
+                        "headline-lg-mobile": ["Playfair Display"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", { "lineHeight": "1.6", "letterSpacing": "0.01em", "fontWeight": "300" }],
+                        "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "300" }],
+                        "headline-md": ["32px", { "lineHeight": "1.3", "fontWeight": "500" }],
+                        "headline-xl": ["64px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-lg": ["48px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "label-caps": ["12px", { "lineHeight": "1.0", "letterSpacing": "0.15em", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["32px", { "lineHeight": "1.2", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        .glow-amber { box-shadow: 0 0 20px rgba(212, 175, 55, 0.2); }
+        .hover-glow-amber:hover { box-shadow: 0 0 30px rgba(212, 175, 55, 0.5); }
+    </style>
+</head>
+<body class="antialiased selection:bg-primary-container selection:text-on-primary-container bg-background text-on-surface">
+    <!-- Preloader Screen -->
+    <div id="preloader" class="preloader-overlay">
+        <div class="preloader-content">
+            <div class="trishul-logo">
+                <i class="fa-solid fa-om glow-om"></i>
+            </div>
+            <h2 class="preloader-title">Entering Mount Kailash</h2>
+            <div class="progress-bar-container">
+                <div id="progress-bar" class="progress-bar"></div>
+            </div>
+            <p id="progress-text" class="progress-text">Preloading Sacred Frames: 0%</p>
+        </div>
+    </div>
+
+    <!-- TopNavBar -->
+    <nav class="fixed top-0 w-full z-50 flex justify-between items-center px-8 md:px-16 py-8 bg-transparent bg-gradient-to-b from-[#0a0a0a]/90 to-transparent">
+        <div class="hidden md:flex gap-10">
+            <a class="font-body-md text-sm tracking-[0.2em] uppercase text-primary-container border-b border-primary-container pb-1 transition-colors duration-300" href="#collections">Collections</a>
+            <a class="font-body-md text-sm tracking-[0.2em] uppercase text-on-surface/60 hover:text-primary-container transition-colors duration-300" href="#philosophy">Philosophy</a>
+            <a class="font-body-md text-sm tracking-[0.2em] uppercase text-on-surface/60 hover:text-primary-container transition-colors duration-300" href="#testimonials">Testimonials</a>
+            <a class="font-body-md text-sm tracking-[0.2em] uppercase text-on-surface/60 hover:text-primary-container transition-colors duration-300" href="#newsletter">Gifting</a>
+        </div>
+        <div class="flex flex-col items-center justify-center text-center">
+            <a href="#" class="font-headline-md text-3xl text-primary-container tracking-[0.25em] uppercase leading-none">
+                shivorah
+            </a>
+            <div class="font-body-md text-[10px] text-on-surface/60 tracking-[0.3em] uppercase mt-1">
+                divine within
+            </div>
+        </div>
+        <div class="flex gap-8 items-center">
+            <!-- Supabase Config Status/Trigger Button -->
+            <button id="config-status-btn" class="text-xs font-label-caps text-gray-500 hover:text-primary-container transition-colors flex items-center gap-1" title="Configure Supabase Connection">
+                <span class="material-symbols-outlined text-base">settings</span>
+                <span class="hidden sm:inline">Database</span>
+            </button>
+            <a href="admin/index.html" class="scale-95 active:scale-90 transition-transform text-on-surface/80 hover:text-primary-container flex items-center gap-1" title="Go to Admin Dashboard">
+                <span class="material-symbols-outlined text-[20px]">admin_panel_settings</span>
+                <span class="hidden sm:inline font-label-caps text-xs tracking-wider uppercase">CMS</span>
+            </a>
+            <button id="cart-btn" class="relative scale-95 active:scale-90 transition-transform text-on-surface/80 hover:text-primary-container" aria-label="Shopping Bag">
+                <span class="material-symbols-outlined">shopping_bag</span>
+                <span id="cart-count" class="absolute -top-2 -right-2 bg-primary text-black font-semibold text-[10px] w-4 h-4 rounded-full flex items-center justify-center hidden">0</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Canvas Container (Fixed Background Scroll Animation) -->
+    <div class="canvas-container">
+        <canvas id="scroll-canvas"></canvas>
+        <div class="canvas-overlay"></div>
+    </div>
+
+    <!-- Main Content for Scroll Sequence -->
+    <main class="scroll-runway">
+        <!-- Section 1: Intro / Sacred Peaks -->
+        <section id="section-1" class="scroll-section active">
+            <div class="glass-card" id="card-1">
+                <span id="hero-subtitle" class="card-subtitle">DIVINE WITHIN</span>
+                <h1 id="hero-title" class="card-title">THE DIVINE ADORNMENT</h1>
+                <p id="hero-description" class="card-text">Handcrafted Rudraksha jewelry born from the depths of meditation and the peak of the Himalayas.</p>
+                <div id="hero-cta-container" class="mt-8 hidden">
+                    <a id="hero-cta-btn" href="#collections" class="inline-block bg-primary text-black font-label-caps text-xs px-8 py-3 uppercase tracking-widest hover-glow-amber transition-all duration-300 font-semibold">Explore Collections</a>
+                </div>
+                <div class="scroll-prompt mt-8">
+                    <span class="prompt-text">Scroll to Begin</span>
+                    <div class="mouse-icon">
+                        <div class="wheel"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Content panels (With Solid Background & High Z-Index) -->
+    <div class="relative z-10 bg-background text-on-surface">
+        
+        <!-- Featured Promotional Banner if active -->
+        <div id="promo-banner" class="bg-primary text-black text-center py-3 px-4 font-label-caps text-[11px] tracking-[0.2em] font-semibold hidden">
+            <!-- Populated dynamically -->
+        </div>
+
+        <!-- Featured Collection Section -->
+        <section id="collections" class="py-32 md:py-40 px-6 md:px-16 max-w-[1440px] mx-auto">
+            <div class="text-center mb-24">
+                <h2 id="collections-title" class="font-headline-lg text-4xl md:text-5xl text-primary-container mb-6 tracking-wide">Sacred Geometry</h2>
+                <p id="collections-subtitle" class="font-body-md text-lg text-gray-400 max-w-xl mx-auto font-light">Artifacts designed to harmonize with your spiritual frequency.</p>
+            </div>
+
+            <!-- Categories Tabs -->
+            <div id="category-tabs" class="flex flex-wrap justify-center gap-6 mb-16 border-b border-outline-variant/10 pb-6">
+                <!-- Loaded dynamically -->
+            </div>
+
+            <!-- Products Grid -->
+            <div id="product-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 md:gap-16">
+                <!-- Loading State (Pulse Skeleton) -->
+                <div class="col-span-full text-center py-20 text-gray-500">
+                    <div class="animate-pulse flex flex-col items-center gap-4">
+                        <span class="material-symbols-outlined text-4xl text-primary-container animate-spin">sync</span>
+                        <p class="font-body-md text-lg">Aligning frequencies... Fetching sacred artifacts...</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Brand Story Section -->
+        <section id="philosophy" class="py-32 md:py-40 relative overflow-hidden bg-[#050505] border-y border-outline-variant/10">
+            <div class="absolute right-0 top-0 w-1/2 h-full opacity-5 pointer-events-none">
+                <div class="w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-primary-container/30 via-transparent to-transparent"></div>
+            </div>
+            <div class="max-w-[1280px] mx-auto px-6 md:px-16 relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-20 lg:gap-32 items-center">
+                <div class="order-2 lg:order-1 relative group">
+                    <div class="absolute inset-0 bg-primary-container/5 blur-3xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-1000"></div>
+                    <img id="philosophy-image" alt="The Breath of Shiva brand story image" class="relative w-full h-[600px] lg:h-[700px] object-cover grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-1000 border border-outline-variant/10" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCvOqjy5rjtxpt-CX_AuK-15zbkExBvMhPAnbPreFnzXfxI_tPkjH3NahDFy6q4nzgxbkFzxYmhOKs6ZoMFded_m1THdZXgEvyjTofHqrbx8BC2N3C6DEvuRUlthvu3nCbhF4UkctCP2zMWW35h2puA14edJt81I8S2_3eh8Wu7V0ZwTywN3f5benQzsH2b0Hd7hjZHBgxNj-NjaJUAp9d3OEQyyJpDCdZ6KSBTa35-9Ku_TQzriOiuEqNbnlTI2bqEgRik0tI3QOk"/>
+                </div>
+                <div class="order-1 lg:order-2 flex flex-col justify-center">
+                    <h2 id="philosophy-title" class="font-headline-xl text-5xl md:text-6xl text-primary-container mb-10 tracking-wide font-medium">The Breath of Shiva</h2>
+                    <div id="philosophy-text-container" class="space-y-8 font-body-lg text-lg text-gray-300 font-light leading-relaxed">
+                        <p>Legend dictates that the Rudraksha seed fell from the eyes of Lord Shiva during deep meditation. Each facet, or 'Mukhi', acts as a specific conduit for cosmic energy, aligning the wearer's subtle body with universal frequencies.</p>
+                        <p>Our artifacts are not merely jewelry; they are anchors of stillness. Hand-selected for their energetic purity and mounted in sacred gold, they serve as quiet companions on your journey inward.</p>
+                    </div>
+                    <div class="mt-12">
+                        <a id="philosophy-btn" href="#collections" class="inline-block text-primary-container border border-primary-container/50 px-10 py-4 font-label-caps text-xs uppercase tracking-[0.2em] hover:bg-primary-container hover:text-[#111] transition-all duration-500">Discover the Origins</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section id="testimonials" class="py-32 md:py-40 bg-background border-b border-outline-variant/10">
+            <div class="max-w-[1280px] mx-auto px-6 md:px-16">
+                <div class="text-center mb-24">
+                    <h2 id="testimonials-title" class="font-headline-lg text-4xl md:text-5xl text-primary-container mb-6 tracking-wide">Sacred Experiences</h2>
+                    <p id="testimonials-subtitle" class="font-body-md text-lg text-gray-400 max-w-xl mx-auto font-light">Harmonies shared by the seekers who wear our sacred geometrical works.</p>
+                </div>
+                <div id="testimonials-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Default testimonials placeholders if DB is empty, loaded dynamically -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsletter Section -->
+        <section id="newsletter" class="py-32 md:py-40 px-6 md:px-16 max-w-4xl mx-auto text-center">
+            <h2 id="newsletter-title" class="font-headline-lg text-4xl md:text-5xl text-white mb-8 tracking-wide font-medium">Join the Circle of Light</h2>
+            <p id="newsletter-subtitle" class="font-body-md text-lg text-gray-400 mb-16 font-light">Receive insights on sacred geometry, new arrivals, and meditative practices.</p>
+            <form id="newsletter-form" class="flex flex-col md:flex-row gap-6 justify-center items-center">
+                <input required id="newsletter-email" class="bg-transparent border-0 border-b border-outline-variant/50 focus:border-primary-container focus:ring-0 text-white font-body-md text-lg px-2 py-4 w-full max-w-md transition-colors placeholder:text-gray-600 font-light" placeholder="Your essence (Email)" type="email"/>
+                <button class="text-[#111] bg-primary-container border border-primary-container px-10 py-4 font-label-caps text-xs uppercase tracking-[0.2em] hover:bg-transparent hover:text-primary-container transition-all duration-500 whitespace-nowrap w-full md:w-auto" type="submit">Subscribe</button>
+            </form>
+            <p id="newsletter-status" class="mt-4 text-xs font-label-caps tracking-widest text-primary-container hidden"></p>
+        </section>
+
+        <!-- Footer -->
+        <footer class="w-full bg-[#050505] border-t border-outline-variant/10 py-20 px-6 md:px-16">
+            <div class="max-w-[1440px] mx-auto flex flex-col md:flex-row justify-between items-center gap-12">
+                <div class="flex flex-col items-center md:items-start text-center md:text-left">
+                    <div class="font-headline-md text-3xl text-primary-container tracking-[0.25em] uppercase leading-none">
+                        shivorah
+                    </div>
+                    <div class="font-body-md text-[10px] text-on-surface/60 tracking-[0.3em] uppercase mt-1">
+                        divine within
+                    </div>
+                </div>
+                <div class="flex flex-wrap justify-center gap-x-10 gap-y-4">
+                    <a class="font-label-caps text-xs tracking-[0.15em] text-gray-400 hover:text-primary-container transition-colors uppercase" href="#collections">Sacred Geometry</a>
+                    <a class="font-label-caps text-xs tracking-[0.15em] text-gray-400 hover:text-primary-container transition-colors uppercase" href="#philosophy">Meditation Guide</a>
+                    <a class="font-label-caps text-xs tracking-[0.15em] text-gray-400 hover:text-primary-container transition-colors uppercase" href="#testimonials">Reviews</a>
+                    <a class="font-label-caps text-xs tracking-[0.15em] text-gray-400 hover:text-primary-container transition-colors uppercase" href="admin/auth.html">Admin Login</a>
+                </div>
+                <div class="font-label-caps text-[10px] tracking-[0.2em] text-gray-600 uppercase">
+                    © 2026 SHIVORAH. DIVINE WITHIN.
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Floating Interactive Controls for Scroll Sequence -->
+    <div id="controls-panel" class="controls-panel hidden">
+        <button id="play-pause-btn" class="control-btn" title="Toggle Autoplay" aria-label="Toggle Autoplay">
+            <i class="fa-solid fa-play"></i>
+        </button>
+        <div class="scrub-container">
+            <span class="time-label">0%</span>
+            <input type="range" id="scrub-slider" min="0" max="239" value="0" class="progress-slider" aria-label="Scrub timeline">
+            <span class="time-label">100%</span>
+        </div>
+        <button id="audio-btn" class="control-btn" title="Toggle Meditative Sound" aria-label="Toggle Meditative Sound">
+            <i class="fa-solid fa-volume-xmark"></i>
+        </button>
+    </div>
+
+    <!-- Product Quick View Modal -->
+    <div id="product-modal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/85 backdrop-blur-md transition-opacity duration-300 opacity-0 px-4">
+        <div class="relative bg-[#0a0a0a] border border-[#d4af37]/20 w-full max-w-4xl max-h-[90vh] overflow-y-auto grid grid-cols-1 md:grid-cols-2 p-8 md:p-12 gap-8 md:gap-12 shadow-2xl">
+            <!-- Close Button -->
+            <button id="modal-close-btn" class="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors" aria-label="Close modal">
+                <span class="material-symbols-outlined text-3xl">close</span>
+            </button>
+            
+            <!-- Product Images Column (Multiple Images Support Carousel-like UI) -->
+            <div class="flex flex-col gap-4">
+                <div class="aspect-[4/5] bg-[#0f0f0f] border border-outline-variant/10 p-4 flex items-center justify-center overflow-hidden">
+                    <img id="modal-product-image" src="" alt="" class="max-h-[300px] md:max-h-[420px] object-contain transition-transform duration-500 hover:scale-105" />
+                </div>
+                <!-- Thumbnail selector if multiple images exist -->
+                <div id="modal-thumbnails" class="flex gap-2 justify-center overflow-x-auto py-1">
+                    <!-- Loaded dynamically -->
+                </div>
+            </div>
+            
+            <!-- Product Info Column -->
+            <div class="flex flex-col justify-between">
+                <div>
+                    <span id="modal-product-mukhi" class="font-label-caps text-xs text-primary-container tracking-widest uppercase block mb-3">1 Mukhi</span>
+                    <h2 id="modal-product-name" class="font-headline-lg text-3xl text-white mb-4 tracking-wide">Ekam Pendant</h2>
+                    
+                    <div class="flex items-baseline gap-4 mb-6">
+                        <span id="modal-product-price" class="font-body-md text-xl text-primary-container font-medium tracking-wider">$450</span>
+                        <span id="modal-product-compare-price" class="font-body-md text-sm text-gray-500 line-through tracking-wider hidden">$500</span>
+                        <span id="modal-product-discount" class="font-label-caps text-[10px] text-black bg-primary px-2 py-0.5 font-bold hidden">10% OFF</span>
+                    </div>
+                    
+                    <!-- Short Description -->
+                    <p id="modal-product-short-desc" class="font-body-md text-sm text-gray-400 font-light mb-6 leading-relaxed"></p>
+                    
+                    <div class="border-t border-outline-variant/10 pt-6 mt-6 space-y-4">
+                        <div>
+                            <h4 class="font-label-caps text-[10px] text-gray-400 uppercase tracking-widest mb-1">Tags / Category</h4>
+                            <p id="modal-product-category-tags" class="font-body-md text-sm text-gray-300 font-light leading-relaxed"></p>
+                        </div>
+                        <div>
+                            <h4 class="font-label-caps text-[10px] text-gray-400 uppercase tracking-widest mb-1">Spiritual Significance & Detail</h4>
+                            <div id="modal-product-desc" class="font-body-md text-sm text-gray-300 font-light leading-relaxed max-h-40 overflow-y-auto space-y-2 pr-2">
+                                <!-- Rich HTML description -->
+                            </div>
+                        </div>
+                        <div id="modal-video-container" class="hidden">
+                            <h4 class="font-label-caps text-[10px] text-gray-400 uppercase tracking-widest mb-1">Product Presentation Video</h4>
+                            <a id="modal-video-link" href="#" target="_blank" class="text-xs text-primary-container underline flex items-center gap-1 hover:text-white transition-colors">
+                                <span class="material-symbols-outlined text-sm">play_circle</span> Watch Video
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Action Buttons -->
+                <div class="flex flex-col sm:flex-row gap-4 mt-8 pt-6 border-t border-outline-variant/10">
+                    <button id="modal-add-to-cart-btn" class="flex-1 bg-primary-container text-[#111] font-label-caps text-xs py-4 text-center uppercase tracking-widest hover-glow-amber transition-all duration-300 font-semibold">
+                        Add to Sacred Box
+                    </button>
+                    <button id="modal-checkout-btn" class="flex-1 border border-primary-container/30 text-primary-container hover:border-primary-container hover:text-white font-label-caps text-xs py-4 text-center uppercase tracking-widest transition-all duration-300">
+                        Buy Sacred Bead
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Simple Shopping Bag/Cart Modal (Sidebar Drawer) -->
+    <div id="cart-drawer" class="fixed inset-y-0 right-0 z-[110] w-full max-w-md bg-[#0a0a0a] border-l border-outline-variant/10 p-6 shadow-2xl flex flex-col justify-between transform translate-x-full transition-transform duration-300">
+        <div>
+            <div class="flex justify-between items-center pb-6 border-b border-outline-variant/10 mb-6">
+                <h3 class="font-headline-md text-xl text-primary-container tracking-wider uppercase">Your Sacred Box</h3>
+                <button id="cart-drawer-close" class="text-gray-400 hover:text-white transition-colors">
+                    <span class="material-symbols-outlined text-2xl">close</span>
+                </button>
+            </div>
+            <!-- Cart Items List -->
+            <div id="cart-items-container" class="space-y-4 max-h-[60vh] overflow-y-auto pr-2">
+                <!-- Cart items load here -->
+                <p class="text-gray-500 font-body-md text-center py-10">Your box is empty. Gather items on your journey.</p>
+            </div>
+        </div>
+
+        <div class="border-t border-outline-variant/10 pt-6 mt-6">
+            <div class="flex justify-between items-center mb-6">
+                <span class="font-label-caps text-xs tracking-widest text-gray-400 uppercase">Subtotal</span>
+                <span id="cart-subtotal" class="font-body-md text-lg text-primary-container font-semibold">$0</span>
+            </div>
+            
+            <!-- Checkout Form Container (Simple checkout simulation to generate orders in DB) -->
+            <form id="checkout-form" class="space-y-3 hidden">
+                <h4 class="font-label-caps text-[10px] text-gray-400 tracking-widest uppercase border-b border-outline-variant/5 pb-1">Delivery Essence</h4>
+                <input required id="checkout-name" type="text" placeholder="Name" class="w-full bg-[#0f0f0f] border border-outline-variant/20 rounded-sm text-sm text-white px-3 py-2 focus:border-primary-container focus:ring-0 placeholder:text-gray-700"/>
+                <input required id="checkout-email" type="email" placeholder="Email" class="w-full bg-[#0f0f0f] border border-outline-variant/20 rounded-sm text-sm text-white px-3 py-2 focus:border-primary-container focus:ring-0 placeholder:text-gray-700"/>
+                <input id="checkout-phone" type="tel" placeholder="Phone" class="w-full bg-[#0f0f0f] border border-outline-variant/20 rounded-sm text-sm text-white px-3 py-2 focus:border-primary-container focus:ring-0 placeholder:text-gray-700"/>
+                <textarea required id="checkout-address" placeholder="Shipping Address" rows="2" class="w-full bg-[#0f0f0f] border border-outline-variant/20 rounded-sm text-sm text-white px-3 py-2 focus:border-primary-container focus:ring-0 placeholder:text-gray-700"></textarea>
+                <div class="flex gap-2">
+                    <button type="button" id="checkout-cancel" class="w-1/3 border border-outline-variant/20 text-gray-400 hover:text-white text-xs font-label-caps py-3 uppercase tracking-wider transition-all">Cancel</button>
+                    <button type="submit" class="flex-grow bg-primary text-black text-xs font-label-caps py-3 uppercase tracking-widest font-semibold hover-glow-amber transition-all">Order Artifacts</button>
+                </div>
+            </form>
+
+            <button id="cart-checkout-btn" class="w-full bg-primary-container text-[#111] font-label-caps text-xs py-4 text-center uppercase tracking-widest hover-glow-amber transition-all duration-300 font-semibold">
+                Proceed to Checkout
+            </button>
+        </div>
+    </div>
+
+    <!-- Database Connection Config Modal (Saves to localStorage, making Vercel deployments flexible) -->
+    <div id="config-modal" class="fixed inset-0 z-[120] hidden items-center justify-center bg-black/90 backdrop-blur-md px-4">
+        <div class="bg-[#0a0a0a] border border-[#d4af37]/30 w-full max-w-md p-8 shadow-2xl flex flex-col gap-6 relative rounded-sm">
+            <button id="config-close-btn" class="absolute top-4 right-4 text-gray-500 hover:text-white transition-colors">
+                <span class="material-symbols-outlined text-2xl">close</span>
+            </button>
+            <div class="text-center">
+                <span class="material-symbols-outlined text-4xl text-primary-container">database</span>
+                <h3 class="font-headline-md text-2xl text-white mt-2">Supabase Configuration</h3>
+                <p class="font-body-md text-xs text-gray-400 mt-1">Connect this website dynamically to your Supabase backend.</p>
+            </div>
+            <div class="space-y-4">
+                <div>
+                    <label class="block font-label-caps text-[10px] text-gray-400 uppercase tracking-widest mb-1.5">Supabase URL</label>
+                    <input id="config-url" type="url" placeholder="https://xxxxxx.supabase.co" class="w-full bg-[#0f0f0f] border border-outline-variant/20 rounded-sm text-sm text-white px-3 py-2 focus:border-primary-container focus:ring-0 placeholder:text-gray-700"/>
+                </div>
+                <div>
+                    <label class="block font-label-caps text-[10px] text-gray-400 uppercase tracking-widest mb-1.5">Supabase Anon Key</label>
+                    <input id="config-key" type="password" placeholder="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." class="w-full bg-[#0f0f0f] border border-outline-variant/20 rounded-sm text-sm text-white px-3 py-2 focus:border-primary-container focus:ring-0 placeholder:text-gray-700"/>
+                </div>
+            </div>
+            <div class="bg-primary/5 border border-primary/20 p-4 text-[11px] font-body-md text-gray-300 leading-relaxed rounded-sm">
+                <strong>Vercel Flexibility Tip:</strong> Credentials can be hardcoded in <code class="text-primary">config.js</code> or saved in this browser's <code class="text-primary">localStorage</code>. This dashboard allows you to manage it without editing code.
+            </div>
+            <div class="flex gap-4 mt-2">
+                <button id="config-clear-btn" class="flex-1 border border-red-500/30 text-red-400 hover:bg-red-500/10 text-xs font-label-caps py-3 uppercase tracking-wider transition-all">Clear</button>
+                <button id="config-save-btn" class="flex-1 bg-primary text-black text-xs font-label-caps py-3 uppercase tracking-widest font-semibold hover-glow-amber transition-all">Save Config</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="config.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="app.js"></script>
+</body>
+</html>

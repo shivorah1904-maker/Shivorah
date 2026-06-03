@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHIVORAH | Admin Dashboard</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    
+    <!-- Material Symbols -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet"/>
+    
+    <style>
+        body {
+            background-color: #080808;
+            font-family: 'Hanken Grotesk', sans-serif;
+        }
+        .active-tab {
+            background-color: rgba(242, 202, 80, 0.08);
+            border-left: 3px solid #f2ca50;
+            color: #f2ca50;
+        }
+        /* Custom Scrollbar for dashboard tables */
+        .dash-scroll::-webkit-scrollbar {
+            height: 6px;
+            width: 6px;
+        }
+        .dash-scroll::-webkit-scrollbar-track {
+            background: #0f0f0f;
+        }
+        .dash-scroll::-webkit-scrollbar-thumb {
+            background: #2a2a2a;
+            border-radius: 3px;
+        }
+        .dash-scroll::-webkit-scrollbar-thumb:hover {
+            background: #3a3a3a;
+        }
+    </style>
+</head>
+<body class="text-gray-100 flex min-h-screen">
+
+    <!-- Sidebar (Desktop Drawer) -->
+    <aside id="sidebar" class="w-64 bg-[#0d0d0d] border-r border-white/5 flex flex-col justify-between fixed h-full z-40 transition-transform -translate-x-full md:translate-x-0">
+        <div>
+            <!-- Logo Header -->
+            <div class="px-6 py-8 border-b border-white/5 flex items-center justify-between">
+                <div>
+                    <h1 class="font-headline-md text-2xl text-primary-container tracking-wider uppercase font-semibold leading-none">shivorah</h1>
+                    <span class="text-[9px] text-gray-500 tracking-widest uppercase mt-1 block">Control Center</span>
+                </div>
+                <button onclick="toggleMobileSidebar()" class="md:hidden text-gray-400 hover:text-white">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+            
+            <!-- Navigation List -->
+            <nav class="mt-6 px-3 space-y-1">
+                <button onclick="switchTab('analytics')" id="tab-analytics" class="w-full flex items-center gap-3 px-4 py-3 rounded-sm text-sm text-gray-400 hover:text-white hover:bg-white/5 transition-all text-left">
+                    <span class="material-symbols-outlined text-xl">analytics</span>
+                    <span>Dashboard Analytics</span>
+                </button>
+                <button onclick="switchTab('products')" id="tab-products" class="w-full flex items-center gap-3 px-4 py-3 rounded-sm text-sm text-gray-400 hover:text-white hover:bg-white/5 transition-all text-left">
+                    <span class="material-symbols-outlined text-xl">inventory_2</span>
+                    <span>Product Catalog</span>
+                </button>
+                <button onclick="switchTab('collections')" id="tab-collections" class="w-full flex items-center gap-3 px-4 py-3 rounded-sm text-sm text-gray-400 hover:text-white hover:bg-white/5 transition-all text-left">
+                    <span class="material-symbols-outlined text-xl">collections_bookmark</span>
+                    <span>Collections</span>
+                </button>
+                <button onclick="switchTab('inventory')" id="tab-inventory" class="w-full flex items-center gap-3 px-4 py-3 rounded-sm text-sm text-gray-400 hover:text-white hover:bg-white/5 transition-all text-left">
+                    <span class="material-symbols-outlined text-xl">warehouse</span>
+                    <span>Inventory History</span>
+                </button>
+                <button onclick="switchTab('orders')" id="tab-orders" class="w-full flex items-center gap-3 px-4 py-3 rounded-sm text-sm text-gray-400 hover:text-white hover:bg-white/5 transition-all text-left">
+                    <span class="material-symbols-outlined text-xl">receipt_long</span>
+                    <span>Orders Log</span>
+                </button>
+                <button onclick="switchTab('media')" id="tab-media" class="w-full flex items-center gap-3 px-4 py-3 rounded-sm text-sm text-gray-400 hover:text-white hover:bg-white/5 transition-all text-left">
+                    <span class="material-symbols-outlined text-xl">photo_library</span>
+                    <span>Media Library</span>
+                </button>
+                <button onclick="switchTab('homepage')" id="tab-homepage" class="w-full flex items-center gap-3 px-4 py-3 rounded-sm text-sm text-gray-400 hover:text-white hover:bg-white/5 transition-all text-left">
+                    <span class="material-symbols-outlined text-xl">web</span>
+                    <span>Homepage Content</span>
+                </button>
+            </nav>
+        </div>
+
+        <!-- Footer Session Info -->
+        <div class="p-4 border-t border-white/5 bg-[#0a0a0a]">
+            <div class="flex items-center gap-3 mb-4">
+                <div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary font-semibold text-xs border border-primary/20">
+                    <span id="user-initial">A</span>
+                </div>
+                <div class="overflow-hidden">
+                    <p id="user-email" class="text-xs font-semibold text-white truncate">admin@shivorah.com</p>
+                    <span class="text-[10px] text-primary uppercase font-bold tracking-wider">System Admin</span>
+                </div>
+            </div>
+            <button onclick="logoutAdmin()" class="w-full bg-[#1b1b1b] hover:bg-red-500/10 hover:text-red-400 text-gray-400 text-xs font-semibold py-2.5 rounded-sm flex items-center justify-center gap-2 border border-white/5 hover:border-red-500/30 transition-all">
+                <span class="material-symbols-outlined text-base">logout</span>
+                <span>Sign Out Console</span>
+            </button>
+        </div>
+    </aside>
+
+    <!-- Main Content Workspace Wrapper -->
+    <div class="flex-grow md:pl-64 flex flex-col min-h-screen">
+        
+        <!-- Header -->
+        <header class="bg-[#0b0b0b] border-b border-white/5 h-16 px-6 flex items-center justify-between sticky top-0 z-30">
+            <div class="flex items-center gap-4">
+                <button onclick="toggleMobileSidebar()" class="md:hidden text-gray-400 hover:text-white">
+                    <span class="material-symbols-outlined">menu</span>
+                </button>
+                <h2 id="section-title" class="text-sm font-semibold uppercase tracking-widest text-gray-400">Dashboard Analytics</h2>
+            </div>
+            <div class="flex items-center gap-4">
+                <a href="../index.html" target="_blank" class="text-xs text-gray-400 hover:text-primary-container flex items-center gap-1 border border-white/5 hover:border-primary/20 px-3 py-1.5 bg-[#0f0f0f] rounded-sm transition-all font-semibold">
+                    <span class="material-symbols-outlined text-sm">open_in_new</span>
+                    <span>View Site</span>
+                </a>
+            </div>
+        </header>
+
+        <!-- Dynamic Content Body -->
+        <main class="flex-grow p-6 md:p-8">
+            <div id="loading-spinner" class="flex flex-col items-center justify-center py-40 gap-4">
+                <span class="material-symbols-outlined text-4xl text-primary animate-spin">sync</span>
+                <p class="text-xs font-semibold text-gray-400 uppercase tracking-widest">Re-aligning data vectors...</p>
+            </div>
+            
+            <div id="content-area" class="hidden">
+                <!-- Inner Panel Content injected dynamically -->
+            </div>
+        </main>
+    </div>
+
+    <!-- ----------------------------------------- -->
+    <!-- GLOBAL DIALOGS / DRAWERS -->
+    <!-- ----------------------------------------- -->
+
+    <!-- 1. ADD/EDIT PRODUCT MODAL -->
+    <div id="product-form-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/85 backdrop-blur-md p-4">
+        <div class="bg-[#0a0a0a] border border-white/10 w-full max-w-4xl max-h-[90vh] overflow-y-auto p-8 rounded-sm shadow-2xl relative">
+            <button onclick="closeProductForm()" class="absolute top-4 right-4 text-gray-500 hover:text-white">
+                <span class="material-symbols-outlined text-2xl">close</span>
+            </button>
+            <h3 id="product-form-title" class="font-headline-md text-2xl text-primary-container mb-6">Add New Product</h3>
+            
+            <form id="product-form" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <input type="hidden" id="prod-id" />
+                
+                <!-- Left Column -->
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-400 uppercase tracking-widest mb-1.5">Product Name</label>
+                        <input required id="prod-name" type="text" placeholder="E.g., Rudraksha Geometrical Pendant" class="w-full bg-[#0d0d0d] border border-white/10 rounded-sm text-sm text-white px-3 py-2.5 focus:border-primary focus:ring-0"/>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-400 uppercase tracking-widest mb-1.5">Product Slug</label>
+                            <input required id="prod-slug" type="text" placeholder="ekam-pendant" class="w-full bg-[#0d0d0d] border border-white/10 rounded-sm text-sm text-white px-3 py-2.5 focus:border-primary focus:ring-0"/>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-400 uppercase tracking-widest mb-1.5">SKU (Unique)</label>
+                            <input required id="prod-sku" type="text" placeholder="SHV-RUD-1" class="w-full bg-[#0d0d0d] border border-white/10 rounded-sm text-sm text-white px-3 py-2.5 focus:border-primary focus:ring-0"/>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-3 gap-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-400 uppercase tracking-widest mb-1.5">Price ($)</label>
+                            <input required id="prod-price" type="number" step="0.01" min="0" placeholder="450" class="w-full bg-[#0d0d0d] border border-white/10 rounded-sm text-sm text-white px-3 py-2.5 focus:border-primary focus:ring-0"/>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-400 uppercase tracking-widest mb-1.5">Compare Price</label>
+                            <input id="prod-compare-price" type="number" step="0.01" min="0" placeholder="500" class="w-full bg-[#0d0d0d] border border-white/10 rounded-sm text-sm text-white px-3 py-2.5 focus:border-primary focus:ring-0"/>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-400 uppercase tracking-widest mb-1.5">Discount (%)</label>
+                            <input id="prod-discount" type="number" min="0" max="100" placeholder="10" class="w-full bg-[#0d0d0d] border border-white/10 rounded-sm text-sm text-white px-3 py-2.5 focus:border-primary focus:ring-0"/>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-400 uppercase tracking-widest mb-1.5">Initial Stock</label>
+                            <input required id="prod-stock" type="number" min="0" placeholder="15" class="w-full bg-[#0d0d0d] border border-white/10 rounded-sm text-sm text-white px-3 py-2.5 focus:border-primary focus:ring-0"/>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-400 uppercase tracking-widest mb-1.5">Category / Facet</label>
+                            <input id="prod-category" type="text" placeholder="E.g., 1 Mukhi" class="w-full bg-[#0d0d0d] border border-white/10 rounded-sm text-sm text-white px-3 py-2.5 focus:border-primary focus:ring-0"/>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-400 uppercase tracking-widest mb-1.5">Collection Group</label>
+                        <select id="prod-collection" class="w-full bg-[#0d0d0d] border border-white/10 rounded-sm text-sm text-white px-3 py-2.5 focus:border-primary focus:ring-0">
+                            <option value="">No Collection</option>
+                            <!-- Load collections dynamically -->
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-400 uppercase tracking-widest mb-1.5">Video presentation link (Youtube/Vimeo)</label>
+                        <input id="prod-video" type="url" placeholder="https://youtube.com/watch?v=xxx" class="w-full bg-[#0d0d0d] border border-white/10 rounded-sm text-sm text-white px-3 py-2.5 focus:border-primary focus:ring-0"/>
+                    </div>
+                </div>
+
+                <!-- Right Column -->
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-400 uppercase tracking-widest mb-1.5">Short Summary description</label>
+                        <textarea id="prod-short-desc" rows="2" placeholder="Brief outline..." class="w-full bg-[#0d0d0d] border border-white/10 rounded-sm text-sm text-white px-3 py-2.5 focus:border-primary focus:ring-0"></textarea>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-400 uppercase tracking-widest mb-1.5">Rich Text Details / Spiritual Significance</label>
+                        <!-- Basic HTML support editor -->
+                        <textarea id="prod-desc" rows="6" placeholder="<p>Insert rich description here...</p>" class="w-full bg-[#0d0d0d] border border-white/10 rounded-sm text-sm text-white px-3 py-2.5 focus:border-primary focus:ring-0 font-mono text-xs"></textarea>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-400 uppercase tracking-widest mb-1.5">Product tags (Comma separated)</label>
+                        <input id="prod-tags" type="text" placeholder="featured, mala, necklace" class="w-full bg-[#0d0d0d] border border-white/10 rounded-sm text-sm text-white px-3 py-2.5 focus:border-primary focus:ring-0"/>
+                    </div>
+                    
+                    <!-- Image Selection -->
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-400 uppercase tracking-widest mb-1.5">Product Images</label>
+                        <div class="flex gap-2 mb-2 items-center">
+                            <input id="prod-image-file" type="file" multiple accept="image/*" class="hidden" onchange="uploadProductPhoto(this)"/>
+                            <button type="button" onclick="document.getElementById('prod-image-file').click()" class="bg-[#1b1b1b] border border-white/10 hover:border-primary px-3 py-2 text-xs font-semibold rounded-sm text-gray-300 transition-all flex items-center gap-1">
+                                <span class="material-symbols-outlined text-sm">cloud_upload</span>
+                                <span>Upload Images</span>
+                            </button>
+                            <span class="text-[10px] text-gray-500 font-medium">Multiple files supported. Storage creates public URL.</span>
+                        </div>
+                        <div id="product-images-list" class="flex flex-wrap gap-2 p-3 bg-[#0d0d0d] border border-white/5 min-h-[60px] max-h-[140px] overflow-y-auto">
+                            <!-- Injected selected URLs list -->
+                        </div>
+                    </div>
+                    
+                    <!-- Flags and Toggles -->
+                    <div class="flex gap-6 pt-2">
+                        <label class="flex items-center gap-2 cursor-pointer">
+                            <input id="prod-featured" type="checkbox" class="bg-black border-white/10 rounded-sm text-primary focus:ring-0 w-4 h-4"/>
+                            <span class="text-xs text-gray-300 font-semibold uppercase tracking-wider">Featured Bead</span>
+                        </label>
+                        <label class="flex items-center gap-2 cursor-pointer">
+                            <input id="prod-bestseller" type="checkbox" class="bg-black border-white/10 rounded-sm text-primary focus:ring-0 w-4 h-4"/>
+                            <span class="text-xs text-gray-300 font-semibold uppercase tracking-wider">Best Seller</span>
+                        </label>
+                        <div>
+                            <select id="prod-status" class="bg-[#0d0d0d] border border-white/10 rounded-sm text-xs text-white px-3 py-1.5 focus:border-primary focus:ring-0">
+                                <option value="draft">Draft Status</option>
+                                <option value="active">Active Storefront</option>
+                                <option value="archived">Archived</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Footer buttons -->
+                <div class="col-span-1 md:col-span-2 flex justify-end gap-3 border-t border-white/5 pt-6 mt-2">
+                    <button type="button" onclick="closeProductForm()" class="border border-white/10 text-gray-400 hover:text-white px-6 py-3 text-xs uppercase tracking-wider transition-all font-semibold rounded-sm">Cancel</button>
+                    <button type="submit" class="bg-primary text-black hover:bg-white px-8 py-3 text-xs uppercase tracking-widest font-semibold transition-all duration-300 rounded-sm">Save Artifact</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- 2. ADD/EDIT COLLECTION MODAL -->
+    <div id="collection-form-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/85 backdrop-blur-md p-4">
+        <div class="bg-[#0a0a0a] border border-white/10 w-full max-w-md p-8 rounded-sm shadow-2xl relative">
+            <button onclick="closeCollectionForm()" class="absolute top-4 right-4 text-gray-500 hover:text-white">
+                <span class="material-symbols-outlined text-2xl">close</span>
+            </button>
+            <h3 id="collection-form-title" class="font-headline-md text-2xl text-primary-container mb-6">Create Collection</h3>
+            
+            <form id="collection-form" class="space-y-4">
+                <input type="hidden" id="col-id" />
+                <div>
+                    <label class="block text-xs font-semibold text-gray-400 uppercase tracking-widest mb-1.5">Collection Name</label>
+                    <input required id="col-name" type="text" placeholder="E.g., Sacred Geometry" class="w-full bg-[#0d0d0d] border border-white/10 rounded-sm text-sm text-white px-3 py-2.5 focus:border-primary focus:ring-0"/>
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-gray-400 uppercase tracking-widest mb-1.5">Slug URL path</label>
+                    <input required id="col-slug" type="text" placeholder="sacred-geometry" class="w-full bg-[#0d0d0d] border border-white/10 rounded-sm text-sm text-white px-3 py-2.5 focus:border-primary focus:ring-0"/>
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-gray-400 uppercase tracking-widest mb-1.5">Description text</label>
+                    <textarea id="col-desc" rows="3" placeholder="Describe the energy level or frequency..." class="w-full bg-[#0d0d0d] border border-white/10 rounded-sm text-sm text-white px-3 py-2.5 focus:border-primary focus:ring-0"></textarea>
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-gray-400 uppercase tracking-widest mb-1.5">Banner Image</label>
+                    <div class="flex gap-2 mb-2 items-center">
+                        <input id="col-image-file" type="file" accept="image/*" class="hidden" onchange="uploadCollectionBanner(this)"/>
+                        <button type="button" onclick="document.getElementById('col-image-file').click()" class="bg-[#1b1b1b] border border-white/10 hover:border-primary px-3 py-2 text-xs font-semibold rounded-sm text-gray-300 transition-all flex items-center gap-1">
+                            <span class="material-symbols-outlined text-sm">cloud_upload</span>
+                            <span>Upload Image</span>
+                        </button>
+                    </div>
+                    <input id="col-banner-url" type="url" placeholder="https://image-url.com/banner.jpg" class="w-full bg-[#0d0d0d] border border-white/10 rounded-sm text-sm text-white px-3 py-2.5 focus:border-primary focus:ring-0"/>
+                </div>
+                
+                <div class="flex justify-end gap-3 border-t border-white/5 pt-6 mt-4">
+                    <button type="button" onclick="closeCollectionForm()" class="border border-white/10 text-gray-400 hover:text-white px-4 py-2.5 text-xs uppercase tracking-wider transition-all font-semibold rounded-sm">Cancel</button>
+                    <button type="submit" class="bg-primary text-black hover:bg-white px-6 py-2.5 text-xs uppercase tracking-widest font-semibold transition-all rounded-sm">Save Group</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- 3. ORDER DETAIL VIEW MODAL -->
+    <div id="order-detail-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/85 backdrop-blur-md p-4">
+        <div class="bg-[#0a0a0a] border border-white/10 w-full max-w-2xl p-8 rounded-sm shadow-2xl relative">
+            <button onclick="closeOrderDetail()" class="absolute top-4 right-4 text-gray-500 hover:text-white">
+                <span class="material-symbols-outlined text-2xl">close</span>
+            </button>
+            <h3 class="font-headline-md text-2xl text-primary-container mb-1">Order Details</h3>
+            <p id="order-modal-id" class="text-xs text-gray-500 font-mono mb-6">ID: #xxxxxxxx</p>
+            
+            <div class="grid grid-cols-2 gap-8 mb-6 border-b border-white/5 pb-6">
+                <div>
+                    <h4 class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-3">Customer Information</h4>
+                    <p id="order-cust-name" class="text-sm font-semibold text-white">Client Name</p>
+                    <p id="order-cust-email" class="text-xs text-gray-400 mt-1">client@email.com</p>
+                    <p id="order-cust-phone" class="text-xs text-gray-400 mt-1">+12345678</p>
+                    <p id="order-cust-address" class="text-xs text-gray-300 mt-3 leading-relaxed whitespace-pre-line bg-[#0d0d0d] p-3 border border-white/5">Shipping Address Details</p>
+                </div>
+                <div>
+                    <h4 class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-3">Fulfillment Processing</h4>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-[9px] text-gray-500 uppercase tracking-widest mb-1 font-semibold">Payment Status</label>
+                            <select id="order-pay-status" onchange="updateOrderDetails()" class="bg-[#0d0d0d] border border-white/10 rounded-sm text-xs text-white px-2 py-1.5 focus:border-primary focus:ring-0">
+                                <option value="unpaid">Unpaid</option>
+                                <option value="paid">Paid</option>
+                                <option value="refunded">Refunded</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-[9px] text-gray-500 uppercase tracking-widest mb-1 font-semibold">Order Fulfillment</label>
+                            <select id="order-ship-status" onchange="updateOrderDetails()" class="bg-[#0d0d0d] border border-white/10 rounded-sm text-xs text-white px-2 py-1.5 focus:border-primary focus:ring-0">
+                                <option value="pending">Pending Review</option>
+                                <option value="processing">Processing Samadhi</option>
+                                <option value="shipped">Shipped Transit</option>
+                                <option value="delivered">Delivered Home</option>
+                                <option value="cancelled">Cancelled</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <h4 class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-3">Order Items Array</h4>
+            <div id="order-items-list" class="space-y-2 max-h-48 overflow-y-auto mb-6 pr-2">
+                <!-- Items list -->
+            </div>
+            
+            <div class="flex justify-between items-center border-t border-white/5 pt-6">
+                <div>
+                    <span class="text-[10px] font-semibold text-gray-500 uppercase tracking-widest">Total Transaction Value</span>
+                    <h3 id="order-total-price" class="text-xl font-bold text-primary-container mt-1">$0.00</h3>
+                </div>
+                <button onclick="closeOrderDetail()" class="bg-[#1b1b1b] border border-white/10 hover:border-white px-6 py-2.5 text-xs uppercase tracking-wider text-white transition-all font-semibold rounded-sm">Close Record</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 4. SAFETY DELETION CONFIRMATION DIALOG -->
+    <div id="delete-confirm-modal" class="fixed inset-0 z-[60] hidden items-center justify-center bg-black/90 backdrop-blur-sm p-4">
+        <div class="bg-[#0a0a0a] border border-red-500/25 w-full max-w-sm p-8 rounded-sm shadow-2xl relative">
+            <div class="text-center">
+                <span class="material-symbols-outlined text-4xl text-red-500 mb-2">warning</span>
+                <h3 class="font-headline-md text-xl text-white mb-2">Deconstruct Artifact?</h3>
+                <p class="text-xs text-gray-400 leading-relaxed mb-6">Are you absolutely sure you want to delete <strong id="delete-item-name" class="text-red-400">this item</strong>? This action will permanently sever the database threads and cannot be reversed.</p>
+            </div>
+            <div class="flex gap-4">
+                <button onclick="closeDeleteConfirm()" class="flex-1 border border-white/10 text-gray-400 hover:text-white text-xs font-semibold py-3 uppercase tracking-wider rounded-sm transition-all">Cancel</button>
+                <button id="delete-confirm-btn" class="flex-1 bg-red-600 hover:bg-red-500 text-white text-xs font-semibold py-3 uppercase tracking-widest rounded-sm transition-all">Confirm Delete</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Base Configuration Settings -->
+    <script src="../config.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="admin.js"></script>
+</body>
+</html>

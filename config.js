@@ -1,6 +1,4 @@
-// Supabase Configuration
-// Replace these with your actual credentials or configure them dynamically on the page.
 window.ENV = {
-  SUPABASE_URL: "",
-  SUPABASE_ANON_KEY: ""
+  SUPABASE_URL: "https://zqfjyaxqvhdbczilldiq.supabase.co",
+  SUPABASE_ANON_KEY: "sb_publishable_DI4MXOmS91Fcl_h8jSPmfA_igz2u5rB"
 };
